@@ -2,7 +2,6 @@ const {
   isValidDate,
   isDateBefore,
   cleanURL,
-  normalizedKeyword,
   printMessage
 } = require('../src/utils')
 

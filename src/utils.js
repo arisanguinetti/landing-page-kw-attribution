@@ -1,5 +1,4 @@
 const normalizeUrl = require('normalize-url')
-const normalize = require('normalize-keywords')
 const dotenv = require('dotenv')
 dotenv.config()
 
@@ -30,12 +29,6 @@ const cleanURL = url => {
   return normalizedUrl
 }
 
-const normalizedKeyword = keyword => {
-  return normalize([keyword], {
-    inflect: true
-  })
-}
-
 const printMessage = message => {
   if (
     typeof process.env.DEBUG !== 'undefined' &&
@@ -51,6 +44,5 @@ module.exports = {
   isValidDate,
   isDateBefore,
   cleanURL,
-  normalizedKeyword,
   printMessage
 }
