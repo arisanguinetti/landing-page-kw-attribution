@@ -1,0 +1,33 @@
+language: node_js
+node_js:
+  - stable
+env:
+  global:
+    - REMOTE_APP_DIR=/var/www/arielsanguinetti.com.ar/
+    - REMOTE_USER=deploy
+    - REMOTE_HOST=arielsanguinetti.com.ar
+cache: yarn
+before_install:
+  - openssl aes-256-cbc -K $encrypted_9af234cad9f8_key -iv $encrypted_9af234cad9f8_iv -in .travis/deploy.enc -out deploy -d
+install:
+  - yarn
+before_script:
+  - chmod 600 deploy && mv deploy ~/.ssh/id_rsa
+script:
+  - yarn test --coverage
+  - yarn run build
+after_script:
+  - COVERALLS_REPO_TOKEN=$coveralls_repo_token yarn coveralls
+notifications:
+  email:
+    onfailure: change
+    onsuccess: change
+addons:
+  ssh_known_hosts:
+    - arielsanguinetti.com.ar
+deploy:
+  provider: script
+  script: ./.travis/deploy.sh
+  skip_cleanup: true
+  on:
+    branch: master
