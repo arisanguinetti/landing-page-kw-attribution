@@ -50,18 +50,26 @@ describe('Google Client Auth', () => {
     expect(GoogleClient.data.jwt).not.toBeNull()
   })
   it('should be able to get google authorization', async () => {
-    expect(async () => {
-      await GoogleClient.authorize()
-      expect(GoogleClient.data.auth.access_token).not.toBeUndefined()
-      expect(GoogleClient.data.auth.access_token).not.toBeNull()
-    }).not.toThrow()
+    let throwError = false
+
+    await GoogleClient.authorize().catch(() => {
+      throwError = true
+    })
+
+    expect(throwError).toBe(false)
+    expect(GoogleClient.data.auth.access_token).not.toBeUndefined()
+    expect(GoogleClient.data.auth.access_token).not.toBeNull()
   })
   it('should be able to get google authorization access_token', async () => {
-    expect(async () => {
-      await GoogleClient.authorize()
-      expect(GoogleClient.data.auth.access_token).not.toBeUndefined()
-      expect(GoogleClient.data.auth.access_token).not.toBeNull()
-    }).not.toThrow()
+    let throwError = false
+
+    await GoogleClient.authorize().catch(() => {
+      throwError = true
+    })
+
+    expect(throwError).toBe(false)
+    expect(GoogleClient.data.auth.access_token).not.toBeUndefined()
+    expect(GoogleClient.data.auth.access_token).not.toBeNull()
   })
 })
 
