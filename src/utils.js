@@ -1,6 +1,5 @@
 const normalizeUrl = require('normalize-url')
 const normalize = require('normalize-keywords')
-const nGram = require('n-gram')
 const dotenv = require('dotenv')
 dotenv.config()
 
