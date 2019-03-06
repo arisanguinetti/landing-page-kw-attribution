@@ -1,11 +1,6 @@
 language: node_js
 node_js:
   - stable
-env:
-  global:
-    - REMOTE_APP_DIR=/var/www/arielsanguinetti.com.ar/
-    - REMOTE_USER=deploy
-    - REMOTE_HOST=arielsanguinetti.com.ar
 cache: yarn
 install:
   - yarn
